@@ -1,7 +1,7 @@
 // node_modules
 var express = require ('express');
-// var path = require('path');
-// var bodyParser = require('body-parser');
+var path = require('path');
+var bodyParser = require('body-parser');
 
 // run and port var
 var app = express();
