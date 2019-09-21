@@ -8,6 +8,7 @@ var app = express();
 var PORT = process.env.PORT || 7845;
 // .use
 // app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "app/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(bodyParser.json());
@@ -15,7 +16,7 @@ app.use(express.json());
 
 // localhost url extentions
 require('./app/routing/apiRoutes')(app);
-// require('./app/routing/htmlRoutes')(app);
+require('./app/routing/htmlRoutes')(app);
 // node port running function
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
