@@ -1,5 +1,6 @@
     $(document).ready(function() {
-    $("#submitButton").on("click", function() {
+    $("#submitButton").on("click", function(e) {
+         e.preventDefault();
          
         function newForm() {
             
@@ -21,7 +22,7 @@
              
             var newFriend = {
                 name: $("#formName").val().trim(),
-                profilePic: $("#formImage").val().trim(),
+                // profilePic: $("#formImage").val().trim(),
                 scores: [
                     $('#Q1').val(),
                     $('#Q2').val(),
@@ -36,17 +37,18 @@
                 ]
             };
              
-            var currentURL = window.location.origin;
+            // var currentURL = window.location.origin;
              
-            $.post(currentURL + "/api/friends", newFriend, function(data) {
-                
-                $("#matchName").text(data.name);
-                $("#matchImg").attr("src", data.photo);
-                $("#resultsModal").modal("toggle");
+            $.post("/api/friends", newFriend, function(data) {
+                console.log(data[0]);
+                // console.log(matchYourFriend)
+                $(".modal-body p").text(data.name);
+                // $("#matchImg").attr("src", data.photo);
+                $(".modal").modal("toggle");
             });
-            
+        
             $('#formName').val("");
-            $('#formImage').val("");
+            // $('#formImage').val("");
             $('#Q1').val("");
             $('#Q2').val("");
             $('#Q3').val("");

@@ -22,6 +22,7 @@ module.exports = function(app) {
     }
     
     var comparisonArray = [];
+    console.log(matchYourFriend);
 
     for(var i = 0; i < matchYourFriend.length; i++) {
       var comparedFriend = matchYourFriend[i];
